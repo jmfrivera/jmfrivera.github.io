@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Simple Payroll</title>
+
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+
+<body style="background-image: url('images/bg.png');" class="sub_page">
+
+    <div class="hero_area">
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="index.html">
+                        <span>
+                            John Michael Rivera
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class=""> </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav  ">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="index.html">Home </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="conversion.html"> Conversion <span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="income tax.html">Income Tax </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="factorial.html">Factorial</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="simple payroll.html">Simple Payroll</a>
+                            </li>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="gradescomputation.html">Grades</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+
+    <style>
+        button {
+            background-color: #81B29A;
+            width: 200px;
+            color: rgb(255, 255, 255);
+            padding: 8px 16px;
+            border: 1px solid #81B29A;
+            cursor: pointer;
+            
+        }
+
+        button:hover {
+            background-color: rgb(255, 255, 255);
+            color: rgb(74, 34, 34);
+          
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .th {
+            width: 400px;
+            height: 50px;
+            padding: 8px;
+            background-color: #F2CC8F;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        .tbd {
+            width: 400px;
+            height: 40px;
+            padding: 8px;
+            background-color: #E07A5F;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+
+        .td {
+
+            width: 600px;
+            text-align: center;
+            height: 60px;
+            padding: 10px;
+            color: #3D405B;
+            background-color: #F4F1DE;
+            
+
+
+        }
+
+        .boxcol {
+            background-color: #3D405B;
+            color: rgb(255, 255, 255);
+            padding: 8px 16px;
+            border: 1px solid #3D405B;
+            cursor: pointer;
+        }
+
+        .boxin {
+            width: 150px;
+            height: 30px;
+     
+
+        }
+        .out{
+    text-align: justify;
+  }
+
+
+        .center {
+            text-align: center;
+        }
+
+        .center input[type="text"] {
+            width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .try {
+      text-align: center;
+      width: 1200px; 
+      height: 70px; 
+      border: 1px solid #81B29A;
+      padding: 10px;
+      background-color: #81B29A; 
+      color: rgb(255, 255, 255);
+    }
+
+
+    </style>
+
+    <section style="background-image: url('images/bg.png'); background-color: #3D405B;" class="about_section layout_padding layout_margin">
+      <div class="container  ">
+        <div class="row">
+          <div class="col-md-10.5">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h1 class="try" id="centered-text">Simple Employee Payroll Calculator:
+                </h1>
+                <p style="text-align: justify;"> This part of the website manages a payroll list by enabling users to add and delete employees. When adding an employee, the program prompts for details like Employee Name, Days Worked, Daily Rate, and Deduction Amount, presenting the updated list in a table format showing Line Number, Employee Name, Days Worked, Daily Rate, Gross Pay (Days Worked * Daily Rate), Deduction Amount, and Net Pay (Gross Pay - Deduction Amount). For deletion, the program requests the Line Number of the employee to remove and updates the table accordingly, allowing dynamic management of the payroll list.
+
+
+
+
+
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <label class="boxcol" for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" placeholder="Enter Name">
+    <label class="boxcol" for="daysWorked">Days Worked:</label>
+    <input type="number" id="daysWorked" placeholder="Enter Amount" class="boxin">
+    <label class="boxcol" for="dailyRate">Daily Rate:</label>
+    <input type="number" id="dailyRate" placeholder="Enter Amount" class="boxin">
+    <label class="boxcol" for="deductionAmount">Deduction Amount: </label>
+    <input type="number" id="deductionAmount" placeholder="Enter Amount" class="boxin">
+    <button onclick="addEmployee()" >Add Employee</button>
+    <br></br>
+
+    <table id="payrollTable">
+        <thead>
+            <tr>
+                <th class="th">No.</th>
+                <th class="th">Employee Name</th>
+                <th class="th">Days Worked</th>
+                <th class="th">Daily Rate</th>
+                <th class="th">Gross Pay</th>
+                <th class="th">Deduction Amount</th>
+                <th class="th">Net Pay</th>
+                <th class="th">Delete</th>
+            </tr>
+        </thead>
+        <tbody class="td" id="payrollBody">
+        </tbody>
+    </table>
+
+    <br>
+    </br>
+
+    <section class="center">
+        <label class="tbd" for="deleteIndex">Delete Entry (Enter Line Number):</label>
+        <input type="number" id="deleteIndex">
+        <button  onclick="deleteEmployee()">Delete Employee</button>
+    </section>
+
+    <br>
+    </br>
+    <br>
+    </br>
+
+
+
+
+
+    <script>
+        let payrollList = [];
+        function addEmployee() {
+            const employeeName = document.getElementById('employeeName').value;
+            const daysWorked = parseInt(document.getElementById('daysWorked').value);
+            const dailyRate = parseFloat(document.getElementById('dailyRate').value);
+            const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
+
+            const grossPay = daysWorked * dailyRate;
+            const netPay = grossPay - deductionAmount;
+
+            payrollList.push({
+                employeeName,
+                daysWorked,
+                dailyRate,
+                grossPay,
+                deductionAmount,
+                netPay
+            });
+
+            displayPayroll();
+        }
+
+        function deleteEmployee() {
+            const deleteIndex = parseInt(document.getElementById('deleteIndex').value);
+            if (deleteIndex >= 1 && deleteIndex <= payrollList.length) {
+                payrollList.splice(deleteIndex - 1, 1);
+                displayPayroll();
+            } else {
+                alert('Invalid line number to delete.');
+            }
+        }
+
+        function displayPayroll() {
+            const tableBody = document.getElementById('payrollBody');
+            tableBody.innerHTML = '';
+
+            payrollList.forEach((employee, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${employee.employeeName}</td>
+          <td>${employee.daysWorked}</td>
+          <td>${employee.dailyRate}</td>
+          <td>${employee.grossPay}</td>
+          <td>${employee.deductionAmount}</td>
+          <td>${employee.netPay}</td>
+          <td><button onclick="deleteEmployeeEntry(${index})">Delete</button></td>
+        `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function deleteEmployeeEntry(index) {
+            payrollList.splice(index, 1);
+            displayPayroll();
+        }
+    </script>
+
+
+
+
+    <div style="background-image: url('images/bg.png'); " class="footer_container">
+      <section class="info_section ">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-3 ">
+              <div class="info_detail">
+                <h4>
+                  John Michael Rivera
+                </h4>
+                <p class="out">
+                  I'm a first-year BSIT (Bachelor of Science in Information Technology) student with a passion for coding. I thrive on unraveling the intricate world of programming languages, always seeking new challenges to expand my skills. My journey into the realm of technology is just beginning, and I'm excited to explore, learn, and create innovative solutions that can make a difference."
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-2 mx-auto">
+              <div class="info_link_box">
+                <h4>
+                  Links
+                </h4>
+                <div class="info_links">
+                  <a class="" href="index.html">
+                    Home
+                  </a>
+                  <a class="" href="conversion.html">
+                    Conversion
+                  </a>
+                  <a class="" href="income tax.html">
+                    Income Tax
+                  </a>
+                  <a class="" href="factorial.html">
+                    Factorial
+                  </a>
+                  <a class="" href="simple payroll.html">
+                    Simple Payroll
+                  </a>
+                  <a class="" href="gradescomputation.html">
+                    Grades
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ">
+              <h4>
+                Project
+              </h4>
+              <p class="out">
+                This is our final project in our ITC subject. This website serves as a medium in order for me to showcase my passion in creating website especially front-end development.
+              </p>
+              </form>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-0 ml-auto">
+              <div class="info_contact">
+                <h4>
+                  Address
+                </h4>
+                <div class="contact_link_box">
+                  <a href="">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span>
+                      Jacinto Street, Davao City
+                    </span>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span>
+                      Call +63 91232938291
+                    </span>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span>
+                      jmfrivera@addu.edu.ph
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <div class="info_social">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+        <footer class="footer_section">
+            <div class="container">
+              <p>
+            John Michael Rivera
+              </p>
+            </div>
+          </footer>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+
+</body>
+
+</html>
