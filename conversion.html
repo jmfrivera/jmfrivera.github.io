@@ -22,29 +22,33 @@
 </head>
 
 <script>
-  function celsiusToFahrenheit() {
-      var celsius = parseFloat(document.getElementById("celsius").value);
-      var fahrenheit = (celsius * 9 / 5) + 32;
-      document.getElementById("result1").innerHTML = fahrenheit + " °F";
-  }
+function celsiusToFahrenheit() {
+    let celsius = parseFloat(document.getElementById("celsius").value);
+    let fahrenheit = (celsius * 9/5) + 32;
+    let formattedResult = fahrenheit.toFixed(2);
+    document.getElementById("result1").innerText = formattedResult;
+}
 
-  function fahrenheitToCelsius() {
-      var fahrenheit = parseFloat(document.getElementById("fahrenheit").value);
-      var celsius = (fahrenheit - 32) * 5 / 9;
-      document.getElementById("result2").innerHTML = celsius + " °C";
-  }
+function fahrenheitToCelsius() {
+    let fahrenheit = parseFloat(document.getElementById("fahrenheit").value);
+    let celsius = (fahrenheit - 32) * 5/9;
+    let formattedResult = celsius.toFixed(2);
+    document.getElementById("result2").innerText = formattedResult;
+}
 
-  function metersToFeet() {
-      var meters = parseFloat(document.getElementById("meters").value);
-      var feet = meters * 3.28084;
-      document.getElementById("result3").innerHTML = feet + " ft";
-  }
+function metersToFeet() {
+    let meters = parseFloat(document.getElementById("meters").value);
+    let feet = meters * 3.28084;
+    let formattedResult = feet.toFixed(2);
+    document.getElementById("result3").innerText = formattedResult;
+}
 
-  function feetToMeters() {
-      var feet = parseFloat(document.getElementById("feet").value);
-      var meters = feet / 3.28084;
-      document.getElementById("result4").innerHTML = meters + " m";
-  }
+function feetToMeters() {
+    let feet = parseFloat(document.getElementById("feet").value);
+    let meters = feet * 0.3048;
+    let formattedResult = meters.toFixed(2);
+    document.getElementById("result4").innerText = formattedResult;
+}
 </script>
 
 <body style="background-image: url('images/bg.png'); "class="sub_page">
@@ -107,14 +111,13 @@
     }
 
     .hey {
-       text-align: justify;
+      text-align: right;
       width: 310px; 
       height: 40px; 
       border: 1px solid #F2CC8F;
       padding: 5px;
       background-color: #F2CC8F; 
       color: rgb(0, 0, 0); 
-      text-align: center;
   }
 
   .hey:hover {
@@ -137,9 +140,17 @@
     text-align: justify;
   }
 
+  .in{
+    text-align: right;
+  }
+
+  .right{
+    text-align: right;
+  }
 
 
   </style>
+
 
 
 
@@ -152,24 +163,25 @@
               <h1 class="try" id="centered-text">Conversion:
               </h1>
             </div>      
+            
             <h3>Celsius to Fahrenheit</h3>
-            <input type="number" id="celsius" placeholder="Enter Celsius">
-            <button onclick="celsiusToFahrenheit()" style="background-color: #81B29A;">Convert </button>
-            <p class="hey" id="result1"></p>
-        
+              <input style="text-align: right;" type="number" id="celsius" placeholder="Enter Celsius">
+              <button onclick="celsiusToFahrenheit()" style="background-color: #81B29A;">Convert </button>
+              <p class="hey" id="result1"></p> == %0
+            
             <h3>Fahrenheit to Celsius</h3>
-            <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit">
+            <input style="text-align: right;" type="number" id="fahrenheit" placeholder="Enter Fahrenheit">
             <button onclick="fahrenheitToCelsius()" style="background-color: #81B29A;">Convert</button>
             <p class="hey" id="result2"></p>
-        
+            
             <h2>Meters to Feet</h2>
-            <input type="number" id="meters" placeholder="Enter Meters">
-            <button onclick="metersToFeet() "style="background-color: #81B29A;">Convert</button>
+            <input style="text-align: right;" type="number" id="meters" placeholder="Enter Meters">
+            <button onclick="metersToFeet()" style="background-color: #81B29A;">Convert</button>
             <p class="hey" id="result3"></p>
-        
+            
             <h2>Feet to Meters</h2>
-            <input type="number" id="feet" placeholder="Enter Feet">
-            <button onclick="feetToMeters() "style="background-color: #81B29A;">Convert</button>
+            <input style="text-align: right;" class="" type="number" id="feet" placeholder="Enter Feet">
+            <button onclick="feetToMeters()" style="background-color: #81B29A;">Convert</button>
             <p class="hey" id="result4"></p>
 
           </div>

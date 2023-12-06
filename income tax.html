@@ -78,7 +78,7 @@
     function calculateTax() {
       const income = parseFloat(document.getElementById('income').value);
       let tax = 0;
-
+  
       if (income <= 250000) {
         tax = 0;
       } else if (income > 250000 && income <= 400000) {
@@ -92,7 +92,7 @@
       } else if (income > 8000000) {
         tax = 2410000 + 0.35 * (income - 8000000);
       }
-
+  
       document.getElementById('result').innerHTML = `Income Tax: PHP ${tax.toFixed(2)}`;
     }
   </script>
@@ -132,7 +132,7 @@
     border: 1px solid #E07A5F;
     cursor: pointer;
     width: 500px;
-    text-align: center;
+    text-align: right;
   }
 
   .justified {
@@ -167,7 +167,7 @@
     }
 
     .forres {
-      text-align: center;
+      text-align: right;
       width: 500px; 
       height: 50px; 
       border: 1px solid #E07A5F;
@@ -208,7 +208,7 @@
                 in estimating their income tax obligations, facilitating better financial planning and decision-making. 
               </p>
               <label class="forcalc" for="income">Enter Taxable Income (PHP):</label>
-              <input class="forint" type="number" id="income" name="income" min="0" required placeholder="         Taxable Income">
+              <input class="forint" type="number" id="income" name="income" min="0" required>
               <p> </p>
               <button onclick="calculateTax()">Calculate</button>
               <p class="forres"  id="result">

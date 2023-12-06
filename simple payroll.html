@@ -106,7 +106,7 @@
             padding: 8px;
             background-color: #E07A5F;
             color: rgb(255, 255, 255);
-            text-align: center;
+            text-align: right;
         }
 
 
@@ -131,12 +131,10 @@
             cursor: pointer;
         }
 
-        .boxin {
-            width: 150px;
-            height: 30px;
-     
 
-        }
+
+
+  
         .out{
     text-align: justify;
   }
@@ -162,6 +160,54 @@
       color: rgb(255, 255, 255);
     }
 
+    .newinputnamee {
+      text-align: right;
+      width: 150px;
+      height: 30px;
+      
+    }
+
+    .newinput{
+      text-align: right;
+      width: 150px;
+      height: 30px;
+    
+    }
+
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.4), 0.4;
+
+    }
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #a48d8d;
+    width: 50%;
+    text-align: center;
+}
+  
+
+.modal-content button {
+    display: block;
+    margin: 0 auto;
+}
+
+.close {
+text-align: right;
+
+
+}
+
 
     </style>
 
@@ -176,9 +222,6 @@
                 <p style="text-align: justify;"> This part of the website manages a payroll list by enabling users to add and delete employees. When adding an employee, the program prompts for details like Employee Name, Days Worked, Daily Rate, and Deduction Amount, presenting the updated list in a table format showing Line Number, Employee Name, Days Worked, Daily Rate, Gross Pay (Days Worked * Daily Rate), Deduction Amount, and Net Pay (Gross Pay - Deduction Amount). For deletion, the program requests the Line Number of the employee to remove and updates the table accordingly, allowing dynamic management of the payroll list.
 
 
-
-
-
                 </p>
             </div>
           </div>
@@ -186,16 +229,16 @@
       </div>
     </section>
 
-
     <label class="boxcol" for="employeeName">Employee Name:</label>
-    <input type="text" id="employeeName" placeholder="Enter Name">
+    <input class="newinputnamee" type="text" id="employeeName" placeholder="Enter Name">
     <label class="boxcol" for="daysWorked">Days Worked:</label>
-    <input type="number" id="daysWorked" placeholder="Enter Amount" class="boxin">
+    <input type="number" id="daysWorked" placeholder="0" class="newinput">
     <label class="boxcol" for="dailyRate">Daily Rate:</label>
-    <input type="number" id="dailyRate" placeholder="Enter Amount" class="boxin">
-    <label class="boxcol" for="deductionAmount">Deduction Amount: </label>
-    <input type="number" id="deductionAmount" placeholder="Enter Amount" class="boxin">
-    <button onclick="addEmployee()" >Add Employee</button>
+    <input type="number" id="dailyRate" name="dailyRate" placeholder="0.00" class="newinput">
+    <label class="boxcol" for="deductionAmount">Deduction Amount:</label>
+    <input class="newinput" type="number" id="deductionAmount" name="deductionAmount" placeholder="0.00">
+
+    <button  onclick="addEmployee()" >Add Employee</button>
     <br></br>
 
     <table id="payrollTable">
@@ -208,7 +251,7 @@
                 <th class="th">Gross Pay</th>
                 <th class="th">Deduction Amount</th>
                 <th class="th">Net Pay</th>
-                <th class="th">Delete</th>
+
             </tr>
         </thead>
         <tbody class="td" id="payrollBody">
@@ -219,16 +262,70 @@
     </br>
 
     <section class="center">
-        <label class="tbd" for="deleteIndex">Delete Entry (Enter Line Number):</label>
-        <input type="number" id="deleteIndex">
-        <button  onclick="deleteEmployee()">Delete Employee</button>
+        <label class="tbd" for="deleteIndex">Delete Employee (Enter Line Number):</label>
+        <input style="text-align: right;" type="number" id="deleteIndex">
+        <button  class="button" onclick="deleteEmployee()">Delete Employee</button>
+        <button class="button" onclick="clearPayroll()">Clear Table</button>
     </section>
 
+   <div id="clearModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeClearModal()">&times;</span>
+        <p>Are you sure you want to clear the table?</p>
+        <div class="modal-buttons">
+            <button onclick="clearTable()">Yes</button>
+            <button onclick="closeClearModal()">No</button>
+        </div>
+    </div>
+</div>
+    <div id="deleteEmployeeModal" class="modal">
+      <div class="modal-content">
+          <span class="close" onclick="closeDeleteEmployeeModal()">&times;</span>
+          <p>Are you sure you want to delete this employee?</p>
+          <div class="modal-buttons">
+              <button onclick="confirmDeleteEmployee()">Yes</button>
+              <button onclick="closeDeleteEmployeeModal()">No</button>
+          </div>
+      </div>
+  </div>
+
+  <div id="deleteEmployeeModal" class="modal">
+    <div  class="modal-content">
+        <span class="close" onclick="closeDeleteEmployeeModal()">&times;</span>
+        <p>Are you sure you want to delete this employee?</p>
+        <button class="button" onclick="confirmDeleteEmployee()">Confirm Delete</button>
+    </div>
+</div>
+
+   
+
     <br>
     </br>
     <br>
     </br>
 
+
+    <script>
+      // Add event listeners to format inputs with two decimal places
+      document.getElementById('dailyRate').addEventListener('input', function() {
+        formatInput(this);
+      });
+    
+      document.getElementById('deductionAmount').addEventListener('input', function() {
+        formatInput(this);
+      });
+    
+      // Function to format input value to two decimal places
+      function formatInput(input) {
+        let value = input.value;
+        // Remove any non-digit characters except dot (.)
+        value = value.replace(/[^\d.]/g, '');
+        // Format to two decimal places
+        const formattedValue = parseFloat(value).toFixed(2);
+        // Set the formatted value back to the input
+        input.value = formattedValue;
+      }
+    </script>
 
 
 
@@ -256,6 +353,8 @@
             displayPayroll();
         }
 
+    
+
         function deleteEmployee() {
             const deleteIndex = parseInt(document.getElementById('deleteIndex').value);
             if (deleteIndex >= 1 && deleteIndex <= payrollList.length) {
@@ -280,7 +379,7 @@
           <td>${employee.grossPay}</td>
           <td>${employee.deductionAmount}</td>
           <td>${employee.netPay}</td>
-          <td><button onclick="deleteEmployeeEntry(${index})">Delete</button></td>
+
         `;
                 tableBody.appendChild(row);
             });
@@ -290,6 +389,101 @@
             payrollList.splice(index, 1);
             displayPayroll();
         }
+
+
+        function confirmClearModal() {
+            document.getElementById('clearModal').style.display = 'block';
+        }
+
+        // Function to close the clear confirmation modal
+        function closeClearModal() {
+            document.getElementById('clearModal').style.display = 'none';
+        }
+
+        // Function to clear the table after confirmation
+        function clearTable() {
+            payrollList = [];
+            displayPayroll();
+            closeClearModal();
+        }
+
+        // Function to clear all elements in the table
+        function clearPayroll() {
+            confirmClearModal();
+        }
+
+        // Function to display the payroll table with two decimal places
+        function displayPayroll() {
+    const tableBody = document.getElementById('payrollBody');
+    tableBody.innerHTML = '';
+
+    payrollList.forEach((employee, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${employee.employeeName}</td>
+            <td>${employee.daysWorked}</td>
+            <td>${employee.dailyRate.toFixed(2)}</td>
+            <td>${employee.grossPay.toFixed(2)}</td>
+            <td>${employee.deductionAmount.toFixed(2)}</td>
+            <td>${employee.netPay.toFixed(2)}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+        let deleteIndex = -1;
+
+        function confirmDeleteModal(index) {
+            deleteIndex = index;
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+        // Function to close the delete confirmation modal
+        function closeDeleteModal() {
+            deleteIndex = -1;
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        // Function to trigger delete confirmation for an entry
+        function deleteEmployeeEntry(index) {
+            confirmDeleteModal(index);
+        }
+
+        // Function to confirm delete after the modal confirmation
+        function confirmDelete() {
+            if (deleteIndex >= 0 && deleteIndex < payrollList.length) {
+                payrollList.splice(deleteIndex, 1);
+                displayPayroll();
+            }
+            closeDeleteModal();
+        }
+
+          function confirmDeleteEmployeeModal() {
+      document.getElementById('deleteEmployeeModal').style.display = 'block';
+  }
+
+  // Function to close the Delete Employee confirmation modal
+  function closeDeleteEmployeeModal() {
+      document.getElementById('deleteEmployeeModal').style.display = 'none';
+  }
+
+  // Function to initiate the Delete Employee action and display confirmation modal
+  function deleteEmployee() {
+      confirmDeleteEmployeeModal();
+  }
+
+  // Function to confirm delete employee after modal confirmation
+  function confirmDeleteEmployee() {
+      const deleteIndex = parseInt(document.getElementById('deleteIndex').value);
+      if (deleteIndex >= 1 && deleteIndex <= payrollList.length) {
+          payrollList.splice(deleteIndex - 1, 1);
+          displayPayroll();
+      } else {
+          alert('Invalid line number to delete.');
+      }
+      closeDeleteEmployeeModal();
+  }
     </script>
 
 

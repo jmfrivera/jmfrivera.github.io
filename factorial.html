@@ -65,37 +65,35 @@
     </header>
   </div>
 
-  <script>
-    function calculate() {
-      const n = parseInt(document.getElementById('numberInput').value);
+<script>
+  function calculate() {
+    const n = parseInt(document.getElementById('numberInput').value);
 
-   
-      let factorial = 1;
-      let i = 1;
-      while (i <= n) {
-        factorial *= i;
-        i++;
-      }
-      document.getElementById('factorialResult').innerHTML = `Factorial of ${n}: ${factorial}`;
-
-  
-      let sum = 0;
-      let j = 1;
-      do {
-        sum += j;
-        j++;
-      } while (j <= n);
-      document.getElementById('sumResult').innerHTML = `Sum of first ${n} numbers: ${sum}`;
-
-      
-      let total = 0;
-      for (let k = 1; k <= n; k++) {
-        total += k;
-      }
-      const average = total / n;
-      document.getElementById('averageResult').innerHTML = `Average of first ${n} numbers: ${average}`;
+    let factorial = 1;
+    let i = 1;
+    while (i <= n) {
+      factorial *= i;
+      i++;
     }
-  </script>
+    document.getElementById('factorialResult').innerHTML = `Factorial of ${n}: ${factorial}`;
+
+    let sum = 0;
+    let j = 1;
+    do {
+      sum += j;
+      j++;
+    } while (j <= n);
+    document.getElementById('sumResult').innerHTML = `Sum of first ${n} numbers: ${sum}`;
+
+    let total = 0;
+    for (let k = 1; k <= n; k++) {
+      total += k;
+    }
+    const average = total / n;
+    const averageFormatted = average.toFixed(2);
+    document.getElementById('averageResult').innerHTML = `Average of first ${n} numbers: ${averageFormatted}`;
+  }
+</script>
 
 <style>
   button {
@@ -111,7 +109,7 @@
   }
 
   .hey {
-       text-align: center;
+       text-align: right;
       width: 400px; 
       height: 50px;
       border: 1px solid #F4F1DE;
@@ -153,7 +151,7 @@
 
 
   .forints {
-      text-align: center;
+      text-align: right;
       width: 400px; 
       height: 50px; 
       border: 1px solid #ffffff;
@@ -199,7 +197,7 @@
   
             <label class="forres" for="numberInput">Enter an Integer (n):</label>
             <br></br>
-            <input class="forints" type="number" id="numberInput" min="1" placeholder="     Integer">
+            <input class="forints" type="number" id="numberInput" min="1">
             <br></br>
             <button class="calculate" onclick="calculate()">Calculate</button>
             <br> </br>
